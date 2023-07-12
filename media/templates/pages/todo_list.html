@@ -61,11 +61,13 @@
                             <input type="hidden" name="deleted" value="{{ item.id }}">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
+                        {% if item.status != 'complete' %}
                         <form method="post" action="{% url 'todo_list' %}" class="d-inline">
                             {% csrf_token %}
                             <input type="hidden" name="finished" value="{{ item.id }}">
                             <button type="submit" class="btn btn-success ms-1">Finished</button>
                         </form>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
