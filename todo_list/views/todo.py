@@ -1,3 +1,5 @@
+import logging
+
 from reportlab.pdfgen import canvas
 
 from django.urls import reverse_lazy
@@ -12,6 +14,8 @@ from django.http import (
 
 from todo_list.models import Todo
 from todo_list.forms import TodoListModelForm
+
+logger = logging.getLogger("core")
 
 
 class TodoListView(FormView):
@@ -28,6 +32,7 @@ class TodoListView(FormView):
 
     def form_valid(self, form):
         form.save()
+        logger.info("User entered content")
         return super().form_valid(form)
 
     @csrf_exempt
@@ -46,11 +51,13 @@ class TodoListView(FormView):
             todo = get_object_or_404(Todo, id=todo_id)
             todo.status = 'complete'
             todo.save()
+            logger.info(f"The user changed {todo.subject}'s status to complete")
 
         elif 'deleted' in request.POST:
             todo_id = request.POST.get('deleted')
             todo = get_object_or_404(Todo, id=todo_id)
             todo.delete()
+            logger.info(f"The user deleted {todo.subject}")
 
         return super().post(request, *args, **kwargs)
 
@@ -79,7 +86,7 @@ class TodoListView(FormView):
 
             pdf.showPage()
             pdf.save()
-
+            logger.info("The user requested a Todo list PDF file")
             return response
 
         return super().get(request, *args, **kwargs)
