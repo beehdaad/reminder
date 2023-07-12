@@ -1,0 +1,41 @@
+Project PRW {
+  database_type: "PostgreSQL"
+  note: '''
+    Reminder
+  '''
+  version: "1"
+}
+
+////////////////////////////
+//   1) Todo App   //
+////////////////////////////
+
+Table todo {
+  id int [pk]
+  subject varchar(255) [
+    not null,
+    note: "The subject of the todo"
+  ]
+  priority int [
+    not null,
+    note: "item prioritization"
+  ]
+  scope Status(12) [
+    default: Status.in_process,
+    note: "Status item"
+  ]
+  created timestamp [
+    auto_now_add,
+    note: "Date and time of record creation"
+  ]
+  modified timestamp [
+    auto_now,
+    note: "Date and time of record modification"
+  ]
+}
+
+Enum Status {
+  in_process
+  completed
+  cancel
+}
