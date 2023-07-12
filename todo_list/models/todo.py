@@ -6,7 +6,12 @@ from painless.models.mixins import TimestampMixin
 
 
 class Todo(TimestampMixin):
-    """"""
+    """
+    It is responsible for saving the tasks that need to be done
+    The save method automatically prioritizes when it is called
+    And when the delete method is called,
+    it deletes the object and the priority of the slave is done again
+    """
 
     subject = models.CharField(
         _("Subject"),
@@ -31,6 +36,27 @@ class Todo(TimestampMixin):
             db_table_comment = "User todo list"
             verbose_name = _("Todo")
             verbose_name_plural = _("Todo list")
+
+    def save(self, *args, **kwargs):
+
+        if not self.pk:  # Only for new instances
+            qs = Todo.objects.order_by('created').last()
+            if qs:
+                self.priority = qs.priority + 1
+            else:
+                self.priority = 1
+
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        if self.status is not None:
+            super().delete(*args, **kwargs)
+            qs = Todo.objects.order_by('created')
+            number = 1
+            for item in qs:
+                item.priority = number
+                number += 1
+                item.save()
 
     def __str__(self):
         return f"{self.subject}"
