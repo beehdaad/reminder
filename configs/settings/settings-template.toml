@@ -1,0 +1,36 @@
+[settings]
+
+[settings.django]
+
+DEBUG="truo or false" # boolean
+ALLOWED_HOSTS="example.com, subdomain.example.com"
+SECRET_KEY="write-strong-password"
+
+[settings.csrf]
+CSRF_COOKIE_DOMAIN = "example.com"
+CSRF_COOKIE_SECURE = "true or false"  # or False for local development
+
+[settings.database]
+
+DB_NAME="database-name"
+DB_USER="database-user"
+DB_PASSWORD="database-strong-password"
+DB_PORT="database_port" # int
+DB_HOST="database-host"
+DB_TEST="database-test-name"
+
+[settings.static]
+
+COLLECT_STATIC_DIR="media/collectstatic"
+STATIC_DIR="media/static"
+TEMPLATE_DIR="media/templates"
+
+STATIC_URL="static/"
+MEDIA_URL="media/"
+MEDIA_UPLOAD_DIR="media/uploads"
+
+FIXTURE_TEST_DIRS=["painless/fixtures",]
+
+[settings.localization]
+
+TRANSLATION_DIR="locales"

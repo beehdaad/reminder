@@ -1,0 +1,45 @@
+version = 1
+disable_existing_loggers = false
+
+[loggers.core]
+handlers = ["coreHandler", "consoleHandler"]
+level = "DEBUG"
+propagate = false
+
+[loggers.auth]
+handlers = ["authHandler"]
+level = "INFO"
+propagate = false
+
+[handlers.coreHandler]
+level = "INFO"
+class = "logging.handlers.RotatingFileHandler"
+filename = "logs/core/core.log"
+maxBytes = 104857600
+backupCount = 5
+formatter = "coreFormatter"
+
+[handlers.consoleHandler]
+level="DEBUG"
+class="logging.StreamHandler"
+formatter = "consoleFormatter"
+
+[handlers.authHandler]
+level = "INFO"
+class = "logging.handlers.RotatingFileHandler"
+filename = "logs/auth/auth.log"
+maxBytes = 104857600
+backupCount = 5
+formatter = "authFormatter"
+
+[formatters.coreFormatter]
+format = "%(levelname)s :: %(asctime)s :: %(module)s :: %(process)d :: %(thread)d :: %(message)s"
+datefmt = "%Y-%m-%d %H-%M-%S"
+
+[formatters.consoleFormatter]
+format = "%(levelname)s :: %(asctime)s :: %(module)s :: %(message)s"
+datefmt = "%Y-%m-%d %H-%M-%S"
+
+[formatters.authFormatter]
+format = "%(levelname)s :: %(asctime)s :: %(module)s :: %(message)s"
+datefmt = "%Y-%m-%d %H-%M-%S"
