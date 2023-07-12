@@ -2,13 +2,9 @@
 
 [settings.django]
 
-DEBUG="truo or false" # boolean
+DEBUG="true or false" # boolean
 ALLOWED_HOSTS="example.com, subdomain.example.com"
 SECRET_KEY="write-strong-password"
-
-[settings.csrf]
-CSRF_COOKIE_DOMAIN = "example.com"
-CSRF_COOKIE_SECURE = "true or false"  # or False for local development
 
 [settings.database]
 
