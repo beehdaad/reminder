@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "todo list"
+version = "0.1.0"
+description = "The list of things to do"
+authors = ["beehdaad <behdad.siavoshi1375@gmail.com>"]
+license = "Free"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.3"
+psycopg2 = "^2.9.6"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
