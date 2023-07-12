@@ -11,7 +11,6 @@ DJANGO_CONFIG = config['django']
 DATABASE_CONFIG = config['database']
 STATIC_CONFIG = config['static']
 LOCALIZATION_CONFIG = config['localization']
-CSRF_CONFIG = config['csrf']
 
 DEFAULT_APPS = [
     'django.contrib.admin',
@@ -32,10 +31,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_COOKIE_DOMAIN = CSRF_CONFIG["CSRF_COOKIE_DOMAIN"]
-CSRF_COOKIE_SECURE = CSRF_CONFIG["CSRF_COOKIE_SECURE"]
-CSRF_TRUSTED_ORIGINS = CSRF_CONFIG["CSRF_TRUSTED_ORIGINS"]
-
 ROOT_URLCONF = 'kernel.urls'
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, STATIC_CONFIG['TEMPLATE_DIR']) 
@@ -51,7 +46,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'pages.context_processor.header_footer_context_processor'
             ],
         },
     },
@@ -79,4 +73,3 @@ MEDIA_URL = STATIC_CONFIG['MEDIA_URL']
 MEDIA_ROOT = STATIC_CONFIG['MEDIA_UPLOAD_DIR']
 
 FIXTURES_DIRS = STATIC_CONFIG['FIXTURE_TEST_DIRS']
-

@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "todo list"
+name = "Reminder"
 version = "0.1.0"
-description = "The list of things to do"
+description = "Reminder of the list of things to do"
 authors = ["beehdaad <behdad.siavoshi1375@gmail.com>"]
 license = "Free"
 readme = "README.md"

@@ -21,7 +21,7 @@ class Todo(TimestampMixin):
 
     status = models.CharField(
         _("Status"),
-        max_length=10,
+        max_length=11,
         default=TodoStatus.IN_PROGRESS,
         choices=TodoStatus.choices,
         help_text=_("Status item"),
