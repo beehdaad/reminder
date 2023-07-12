@@ -17,7 +17,8 @@ class DimensionValidator(BaseValidator):
         if width > self.width and height > self.height:
             raise ValidationError(
                 _(
-                    f"The {width} and {height} of the photo must be equal. (square crop)"
+                    f"The {width} and {height} of the photo must be equal. "
+                    "(square crop)"
                 ),
                 code=self.code
             )

@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
 
 from todo_list.models import Todo
 
@@ -35,5 +34,5 @@ class TodoAdmin(admin.ModelAdmin):
         "priority",
         "status"
     )
-    
+
     save_on_top = True

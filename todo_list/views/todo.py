@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
-from django.utils.translation import gettext_lazy as _
 from django.http import (
     HttpResponse,
     HttpRequest
@@ -51,7 +50,9 @@ class TodoListView(FormView):
             todo = get_object_or_404(Todo, id=todo_id)
             todo.status = 'complete'
             todo.save()
-            logger.info(f"The user changed {todo.subject}'s status to complete")
+            logger.info(
+                f"The user changed {todo.subject}'s status to complete"
+            )
 
         elif 'deleted' in request.POST:
             todo_id = request.POST.get('deleted')

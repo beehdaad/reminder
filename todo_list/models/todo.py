@@ -33,9 +33,9 @@ class Todo(TimestampMixin):
     )
 
     class Meta:
-            db_table_comment = "User todo list"
-            verbose_name = _("Todo")
-            verbose_name_plural = _("Todo list")
+        db_table_comment = "User todo list"
+        verbose_name = _("Todo")
+        verbose_name_plural = _("Todo list")
 
     def save(self, *args, **kwargs):
 

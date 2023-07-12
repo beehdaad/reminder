@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.contrib import admin
 from django.utils.text import slugify
 
 
@@ -9,6 +8,7 @@ __all__ = [
     "TitleSlugSummaryMixin",
     "TitleSlugSummaryDescriptionMixin"
 ]
+
 
 class TitleSlugMixin(models.Model):
     """"""
@@ -39,7 +39,7 @@ class TitleSlugMixin(models.Model):
     )
 
     class Meta:
-        abstract=True
+        abstract = True
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title, allow_unicode=True)
@@ -62,7 +62,7 @@ class TitleSlugSummaryMixin(TitleSlugMixin):
     )
 
     class Meta:
-        abstract=True
+        abstract = True
 
 
 class TitleSlugSummaryDescriptionMixin(TitleSlugSummaryMixin):
@@ -80,4 +80,4 @@ class TitleSlugSummaryDescriptionMixin(TitleSlugSummaryMixin):
     )
 
     class Meta:
-        abstract=True
+        abstract = True

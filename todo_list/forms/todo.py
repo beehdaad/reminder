@@ -35,7 +35,9 @@ class TodoListModelForm(forms.ModelForm):
         error_messages = {
             "subject": {
                 "required": _("Please enter your subject"),
-                "max_length": _("The subject cannot be more than 255 characters")
+                "max_length": _(
+                    "The subject cannot be more than 255 characters"
+                )
             },
         }
 
